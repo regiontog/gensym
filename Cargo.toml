@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Erlend Tobiassen <erlend.tobiassen@gmail.com>"]
 description = "Creates unique identifiers for macros using procedural macros "
 repository = "https://github.com/regiontog/gensym"
+documentation = "https://docs.rs/gensym/0.1.0/gensym/"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 edition = "2018"
