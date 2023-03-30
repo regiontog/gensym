@@ -14,7 +14,7 @@ path = "src/lib.rs"
 proc-macro = true
 
 [dependencies]
-uuid = { version = "0.7", features = ["v4"] }
-syn = { version = "0.15", features = ["full"] }
-proc-macro2 = "0.4"
-quote = "0.6"
+uuid = { version = "1.3", features = ["v4"] }
+syn = "2.0"
+proc-macro2 = "1.0"
+quote = "1.0"
