@@ -26,7 +26,6 @@ extern crate proc_macro;
 use proc_macro::TokenStream;
 use proc_macro2::Span;
 
-use quote::quote;
 use syn::{parse_macro_input, parse_quote};
 use uuid::Uuid;
 
@@ -43,18 +42,17 @@ pub fn gensym(input: TokenStream) -> TokenStream {
 }
 
 fn alter_macro(mut mcall: syn::Macro) -> Result<proc_macro2::TokenStream, syn::Error> {
-    use core::iter::Extend;
     use quote::ToTokens;
 
     let sym = syn::Ident::new(
-        &format!("__gensym_{}", Uuid::new_v4().to_simple()),
+        &format!("__gensym_{}", Uuid::new_v4().simple()),
         Span::call_site(),
     );
 
     let mut inserted_gensym: proc_macro2::TokenStream = parse_quote!(#sym, );
 
-    inserted_gensym.extend(mcall.tts);
-    mcall.tts = inserted_gensym;
+    inserted_gensym.extend(mcall.tokens);
+    mcall.tokens = inserted_gensym;
 
     Ok(mcall.into_token_stream())
 }
